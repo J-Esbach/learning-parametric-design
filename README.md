@@ -34,5 +34,3 @@ If you have ideas how to improve this class, you find an error or something else
 Available under MIT license.
 
 The contents of this repository are available as Open Educational Resources. Feel free to reuse them in your own seminars. It's highly appreciated if you give us a heads up and let us know what you think.
-
-hallo...
