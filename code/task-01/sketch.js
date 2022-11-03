@@ -51,7 +51,7 @@ function draw() {
   );
   
   fill('#EAD94C'); //gelb
-  circle(270, 270, 80)
+  circle(270, 270, 80);
   
   fill('#DD7373'); //rosa
   square(290, 20, 40);
@@ -61,5 +61,4 @@ function draw() {
   line(70, 225, 200, 225);
   line(50, 245, 180, 245);
   line(70, 265, 200, 265);
-
 }
