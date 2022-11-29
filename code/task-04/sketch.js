@@ -105,9 +105,6 @@ function setup() {
   radio.position(20, sketchHight-45);
   textAlign(LEFT);
 
-  valueDisplayer = createP()
-  valueDisplayer.position(30,sketchHight+20)
-
 }
 
 function draw() {
