@@ -5,12 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spieltitel</title>
     <link rel="stylesheet" type="text/css" href="/libraries/p5js/p5.css">
+    <style>
+      /* Gestaltung drum herun*/
+      body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+
+    </style>
   </head>
   <body>
+    
+    <!-- JS-Dateien -->
     <script src="/libraries/p5js/p5.min.js"></script>
     <script src="/libraries/p5js/libraries/p5.svg.js"></script>
-    <script src="main.js"></script>
-    <script src="spieler.js"></script>
+    <script src="leveldata.js"></script>
+    <script src="levelblöcke.js"></script>
+    <script src="kollisionen.js"></script>
     <script src="gegner.js"></script>
+    <script src="item.js"></script>
+    <script src="spieler.js"></script>
+    <script src="main.js"></script>
+  
   </body>
 </html>
