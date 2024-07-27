@@ -25,8 +25,7 @@ let coinsPos = [
   {x: 3.5 * blockSize, y: 7.4 * blockSize},
   {x: 15.5 * blockSize, y: 4.4 * blockSize},
 ];
-
-let counter = 0; //für die späteren Items
+let counter = 0;
 
 let pressedKeys = {};
 
@@ -50,7 +49,7 @@ function setup() {
 }
 
 function draw() {
-  background('gray');
+  background('#a1a5d3');
   noStroke();
 
   levelDraw();
@@ -93,6 +92,14 @@ function draw() {
       enemy.splice(e, 1);
     }
   }
+
+  //Counteranzeige
+  textFont('Courier New');
+  textAlign(LEFT);
+  textSize(20);
+  fill('white');
+  text('Münzen: ', blockSize/3, blockSize/2);
+  text(counter, 2.3 * blockSize, blockSize/2);
 }
 
 function keyPressed() {

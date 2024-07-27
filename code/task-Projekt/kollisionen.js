@@ -1,6 +1,6 @@
 const kollisionen = {
   
-  offset: 0.01,
+  offset: 0.001,
 
   "0":function(object, oBx, oBy) { 
     if (this.collideTop(object, oBy)) return;
@@ -47,7 +47,7 @@ const kollisionen = {
 collideBottom:function(object, oBy, yOffset = blockSize) {
   let bottom = oBy * blockSize + yOffset;
   if (object.position.y - object.height < bottom && object.Yold - object.height >= bottom) {
-    //object.jumpPover = 0; //fallingSpeed
+    object.jumpPover = 0; //fallingSpeed
     object.position.y = bottom + object.height + this.offset;
     //object.playerLook = '#0360e5';
     return true;

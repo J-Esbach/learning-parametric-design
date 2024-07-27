@@ -1,7 +1,7 @@
 class Spieler {
   constructor() {
     this.position = {
-      x: 2 * blockSize,
+      x: 2.2 * blockSize,
       y: 2 * blockSize,
     }
     this.width = 13; //15
@@ -12,7 +12,7 @@ class Spieler {
       left: this.position.x - this.width,
       right: this.position.x + this.width,
     }   
-    this.playerLook = 'lightgreen';
+    this.playerLook = '#c9eb7b';
     this.speed = 3;
     this.jumpPover = 130;
     this.fallingSpeed = 0;

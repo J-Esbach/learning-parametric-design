@@ -12,7 +12,7 @@ class Gegner {
         left: this.position.x - this.width,
         right: this.position.x + this.width,
       }
-      this.enemyLook = 'orange';
+      this.enemyLook = '#f5f5f5';
       this.speed = 1;
       this.moveStart = moveStart;
       this.moveMax = moveMax;
@@ -34,9 +34,9 @@ class Gegner {
         this.position.x + this.width <= spieler.position.x + spieler.width &&
         this.position.y - this.height <= spieler.position.y + spieler.width &&
         this.position.y + this.height >= spieler.position.y - spieler.width)) {
-        this.enemyLook = 'red';  
+        this.enemyLook = '#f54e75';  
           } else 
-          this.enemyLook = 'orange';      
+          this.enemyLook = '#f5f5f5';      
     }
   
     falling() {

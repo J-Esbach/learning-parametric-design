@@ -14,8 +14,8 @@ class MünzenItem {
       left: this.position.x - this.pointR,
       right: this.position.x + this.pointR,
     };
-    this.itemLook = '#add8e6';
-    this.strokeLook = '#86c5da';
+    this.itemLook = '#F2A6A6'; //'#add8e6'
+    this.strokeLook = '#F18791'; //'#86c5da'
     this.collected = false; 
   }
   
@@ -89,11 +89,12 @@ class Portal {
       y: y,
     }
     //Farben
-    this.rimLook = '#293241';
-    this.locked = 'red';
-    this.inaktive = 'darkgrey';
-    this.aktive = '#caff70';//DarkOliveGreen1
-    this.portalLook = 'violet';
+    this.rimLook = '#565cb0'; //'#293241'
+    this.rimBlock = '#373B73';
+    this.locked = '#f54e75'; //'red'
+    this.inaktive = '#373b7320'; //'darkgrey'
+    this.aktive = '#caff70';//'#caff70' DarkOliveGreen1
+    this.portalLook = '#373b7320'; //'violet'  #B6D2A2(greyGreen) #373B73
   }
 
   //Inaktives Portal
@@ -120,7 +121,7 @@ class Portal {
     circle(0, -this.rMax/2, 5);
     }
     //Schlüsselloch
-    fill(this.rimLook);
+    fill(this.rimBlock);
     circle(0, -5, 10);
     triangle(0, -10, 5, 10, -5, 10);
     pop();

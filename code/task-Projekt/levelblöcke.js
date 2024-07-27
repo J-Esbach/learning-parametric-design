@@ -28,19 +28,19 @@ const blockForm = {
 const blockTyp = {
     "0": {
         points: blockForm.block,
-        look: '#293241'
+        look: '#565cb0'
     },
     "\\": {
         points: blockForm.schrägR,
-        look: '#293241'
+        look: '#565cb0'
     },
     "/": {
         points: blockForm.schrägL,
-        look: '#293241'
+        look: '#565cb0'
     },
     "_": {
         points: blockForm.halbUnten,
-        look: '#293241'
+        look: '#565cb0'
     }
 }
 
