@@ -19,6 +19,7 @@ const kollisionen = {
       object.position.x = right;
     }
     this.collideBottom(object, oBy);
+    this.sDirection = 1;
   }, 
 
   "/":function(object, oBx, oBy) {
@@ -31,6 +32,7 @@ const kollisionen = {
       object.position.x = left;
     }
     this.collideBottom(object, oBy);
+    this.sDirection = 0;
   }, 
 
   "_":function(object, oBx, oBy) { 
@@ -50,6 +52,7 @@ collideBottom:function(object, oBy, yOffset = blockSize) {
     object.jumpPover = 0; //fallingSpeed
     object.position.y = bottom + object.height + this.offset;
     //object.playerLook = '#0360e5';
+    this.s =false;
     return true;
   } return false;
 },
@@ -60,6 +63,7 @@ collideLeft:function(object, oBx) {
   if (object.position.x + object.width > left && object.Xold + object.width <= left) {
     object.speed = 0;
     object.position.x = left - object.width - this.offset;
+    this.s =false;
     return true;
   } return false;
 },
@@ -69,6 +73,7 @@ collideRight:function(object, oBx) {
   if (object.position.x - object.width < right && object.Xold - object.width >= right) { 
     object.speed = 0;
     object.position.x = right + object.width + this.offset;
+    this.s =false;
     return true;
   } return false;
 },
@@ -79,6 +84,7 @@ collideTop:function(object, oBy, yOffset = 0) {
     //object.jump = false;
     object.fallingSpeed = 0;
     object.position.y = top - object.height - this.offset;
+    this.s =false;
     return true;
   } return false;
 },
@@ -97,13 +103,18 @@ collideSlopeTop:function(object, oBx, oBy, slope, yOffset) {
     //object.jump = false;
     object.fallingSpeed = 0;
     object.position.y = top - object.height - this.offset;
+    this.s = true
     return true;
   } else if (currentCrossProduct < 1 && oldCrossProduct > -1) {
     //object.jump = false;
     object.fallingSpeed = 0;
     object.position.y = oBy * blockSize + slope * currentX + yOffset - object.height - 2 * this.offset;
+    this.s =true;
     return true;
-  } return false;
+  } else {
+    this.s =false;
+    return false;
+  }
 },
 
 handleCollision:function(object, definitionLevel) {

@@ -70,5 +70,6 @@ function draw() {
   circle(-10, -12, 5.5); //-22, -26.4, 12
   
   pop();
-  //save();
+  noLoop();
+  save();
 }

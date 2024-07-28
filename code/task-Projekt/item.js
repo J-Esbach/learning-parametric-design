@@ -1,9 +1,9 @@
 class MünzenItem {
   constructor({x, y}) {
-    this.radius = 15;
+    this.radius = 10;// 15
     this.radius2 = this.radius/1.5;
     this.rounded = 5; //für abgerundete Ecken
-    this.pointR = Math.sqrt( (-15 * -15) + (-15 * -15) );
+    this.pointR = Math.sqrt( (-10 * -10) + (-10 * -10) ); //(-15 * -15) + (-15 * -15)
     this.position = {
       x: x,
       y: y,
@@ -24,16 +24,16 @@ class MünzenItem {
     push();
     fill(this.itemLook);
     noStroke();
-    translate(this.position.x, this.position.y); //damit das Item an der gewunschten stelle ist
+    translate(this.position.x, this.position.y+5); //damit das Item an der gewunschten stelle ist
     angleMode(DEGREES);
     rotate(45); //denn durch die Rotation wird das ganze Koordinatensystem gedreht
     rectMode(RADIUS);
     rect(0, 0, this.radius, this.radius, this.rounded);
     stroke(this.strokeLook);
-    strokeWeight(3);
+    strokeWeight(2.5); //3
     noFill();
     rect(0, 0, this.radius2, this.radius2, this.rounded -2);
-    strokeWeight(5);
+    strokeWeight(5); //5
     point(0, 0);
     pop();
   }  
@@ -61,6 +61,7 @@ class SchlüsselItem {
   show() {
     push();
     translate(this.position.x, this.position.y);
+    scale(0.7,0.7);
     angleMode(DEGREES);
     rotate(-40);
     strokeWeight(3);
@@ -92,9 +93,9 @@ class Portal {
     this.rimLook = '#565cb0'; //'#293241'
     this.rimBlock = '#373B73';
     this.locked = '#f54e75'; //'red'
-    this.inaktive = '#373b7320'; //'darkgrey'
+    this.inaktive = '#9497c7'; //'darkgrey'
     this.aktive = '#caff70';//'#caff70' DarkOliveGreen1
-    this.portalLook = '#373b7320'; //'violet'  #B6D2A2(greyGreen) #373B73
+    this.portalLook = '#9497c7'; //'violet'  #B6D2A2(greyGreen) #373B73
   }
 
   //Inaktives Portal
@@ -121,9 +122,12 @@ class Portal {
     circle(0, -this.rMax/2, 5);
     }
     //Schlüsselloch
+    push();
+    scale(0.8,0.8);
     fill(this.rimBlock);
     circle(0, -5, 10);
     triangle(0, -10, 5, 10, -5, 10);
+    pop();
     pop();
   }
 

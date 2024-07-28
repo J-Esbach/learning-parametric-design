@@ -3,12 +3,17 @@
 let sketchWidth = blockSize * 16; //720 Pixel
 let sketchHeight = blockSize * 10; //450 Pixel
 
+let spielerImg;
+let enemyImg;
+let tileSheet;
+
 let spieler;
 
 let enemy = [];
 let enemyData = [
-  {x: 10.5 * blockSize, y: 10 * blockSize - 21, moveStart: 290, moveMax: 270},
-  {x: 7.5 * blockSize, y: 4.5 * blockSize - 21, moveStart: 220, moveMax: 180},  
+  {x: 10.5 * blockSize, y: 10 * blockSize - 16, moveStart: 290, moveMax: 270},
+  {x: 7.5 * blockSize, y: 4.5 * blockSize - 16, moveStart: 220, moveMax: 180},  
+  {x: 8.5 * blockSize, y: 4.5 * blockSize - 16, moveStart: 220, moveMax: 180},  
 ];
 
 let portal;
@@ -16,7 +21,7 @@ let schlüssel;
 let unlocked = false;
 
 let coins = [];
-let coinsPos = [
+let coinsPos = [ 
   {x: 0.5 * blockSize, y: 2.4 * blockSize}, 
   {x: 5.5 * blockSize, y: 3.9 * blockSize},
   {x: 6.5 * blockSize, y: 3.9 * blockSize},
@@ -30,6 +35,12 @@ let counter = 0;
 let pressedKeys = {};
 
 //-----------------------------------------------
+function preload() {
+  spielerImg = loadImage('Aneye.png');
+  tileSheet = loadImage('Tilesheet.png');
+  enemyImg = loadImage('Gegner.png');
+}
+
 function setup() {
   createCanvas(sketchWidth, sketchHeight);
   spieler = new Spieler();
@@ -75,15 +86,16 @@ function draw() {
       console.log(counter);
     };
   }
-
+/*
   spieler.falling();
   spieler.move();
   spieler.show();
   kollisionen.handleCollision(spieler, definitionLevel1);
+  +/
 
   /* für so viele Gegner wie man möchte*/
   for (let e = enemy.length - 1; e > -1; e -= 1) {
-    //enemy[e].falling();
+    //enemy[e].falling(); //nicht ausführlich gecodet
     enemy[e].moving();
     enemy[e].show();
     //kollisionen.handleCollision(enemy[e], definitionLevel1);
@@ -91,6 +103,7 @@ function draw() {
        (enemy[e].sides.left <= spieler.position.x && enemy[e].sides.right >= spieler.position.x)){
       enemy.splice(e, 1);
     }
+
   }
 
   //Counteranzeige
@@ -100,6 +113,12 @@ function draw() {
   fill('white');
   text('Münzen: ', blockSize/3, blockSize/2);
   text(counter, 2.3 * blockSize, blockSize/2);
+
+  spieler.falling();
+  spieler.move();
+  spieler.show();
+  kollisionen.handleCollision(spieler, definitionLevel1);
+
 }
 
 function keyPressed() {

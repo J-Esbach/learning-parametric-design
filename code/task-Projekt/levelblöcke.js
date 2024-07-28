@@ -1,4 +1,5 @@
 const blockSize = 45;
+const tileBlock = 630;
 
 const blockForm = {
     block: [
@@ -28,39 +29,61 @@ const blockForm = {
 const blockTyp = {
     "0": {
         points: blockForm.block,
-        look: '#565cb0'
+        look: '#565cb0',
+        tX: tileBlock,
+        tY: 0,
     },
     "\\": {
         points: blockForm.schrägR,
-        look: '#565cb0'
+        look: '#565cb0',
+        tX: tileBlock,
+        tY: tileBlock,
     },
     "/": {
         points: blockForm.schrägL,
-        look: '#565cb0'
+        look: '#565cb0',
+        tX: 0,
+        tY: tileBlock,
     },
     "_": {
         points: blockForm.halbUnten,
-        look: '#565cb0'
+        look: '#565cb0',
+        tX: 2*tileBlock,
+        tY: 0,
     }
 }
 
 
 function levelDraw() {
-for (let by = 0; by < definitionLevel1.length; by += 1) {
-    for (let bx = 0; bx < definitionLevel1[by].length; bx += 1) {
-    push()
-    translate(bx * blockSize, by * blockSize);
-    const character = definitionLevel1[by][bx];
-    if (character != ' ') {
-        const charType = blockTyp[character];
-        fill(charType.look);
-        beginShape();
-        for (let i = 0; i < charType.points.length; i += 1) {
-            vertex(charType.points[i].x, charType.points[i].y);
+    
+    for (let by = 0; by < definitionLevel1.length; by += 1) {
+        for (let bx = 0; bx < definitionLevel1[by].length; bx += 1) {
+        push()
+        if (!tileSheet) {
+            translate(bx * blockSize, by * blockSize);
+        } else {
+            translate(bx * (blockSize-1), by * (blockSize-1));
         }
-        endShape(CLOSE);
+        const character = definitionLevel1[by][bx];
+        if (character != ' ') {
+            const charType = blockTyp[character];
+            if(!tileSheet) {
+                fill(charType.look);
+                beginShape();
+                for (let i = 0; i < charType.points.length; i += 1) {
+                    vertex(charType.points[i].x, charType.points[i].y);
+                }
+                endShape(CLOSE);
+            } else {
+                imageMode(CENTER);
+                image(tileSheet, blockSize/2+bx, blockSize/2+by, blockSize, blockSize, charType.tX, charType.tY, tileBlock, tileBlock);
+            }
+        } 
+        if (tileSheet && character == ' ') {
+            imageMode(CENTER);
+            image(tileSheet, blockSize/2+bx, blockSize/2+by, blockSize, blockSize, 0, 0, tileBlock, tileBlock);
+        }
+        pop();
+        }
     }
-    pop();
-    }
-}
 }
